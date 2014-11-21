@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/AndroidBmpUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/ConvertToUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/DeviceUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/FileUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/IsUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/NetworkUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/ResourceUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/StringUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/Trace.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/ZipUtils.java" charset="UTF-8" />
+  </component>
+</project>
