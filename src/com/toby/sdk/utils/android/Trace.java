@@ -1,4 +1,4 @@
-package com.toby.sdk.utils;
+package com.toby.sdk.utils.android;
 
 import android.util.Log;
 
@@ -11,8 +11,6 @@ import java.util.Date;
 
 /*
  * Log
- * @author liguoliang ( didiboy0702@gmail.com )
- * @since 2014-11-21
  */
 public class Trace {
 
@@ -24,7 +22,7 @@ public class Trace {
     public static final int VERBOSE = 2;
 
     public static boolean _isLog = true;
-    private static String TAG = "toby";
+    private static String TAG = "56_lepai";
     
     private static boolean WRITE_TO_FILE = false;//加入把log写入SD卡的功能
     private static String MYLOG_PATH_SDCARD_DIR="/sdcard/";// 日志文件在sdcard中的路径

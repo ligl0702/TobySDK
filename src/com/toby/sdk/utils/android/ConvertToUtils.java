@@ -1,4 +1,4 @@
-package com.toby.sdk.utils;
+package com.toby.sdk.utils.android;
 
 import android.content.Context;
 import android.graphics.Color;

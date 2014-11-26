@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/AndroidBmpUtil.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/ConvertToUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/DeviceUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/FileUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/IsUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/NetworkUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/ResourceUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/StringUtils.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/Trace.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/ZipUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/AndroidBmpUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/ConvertToUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/DeviceUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/FileUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/IsUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/NetworkUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/ResourceUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/StringUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/Trace.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/android/ZipUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/Base64.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/CommonUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/FileUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/LocalStringUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/NumberUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/SecurityUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/StopListFling.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/TimeUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/toby/sdk/utils/lang/ViewUtils.java" charset="UTF-8" />
   </component>
 </project>

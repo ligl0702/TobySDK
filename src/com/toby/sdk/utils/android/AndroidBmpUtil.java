@@ -1,4 +1,4 @@
-package com.toby.sdk.utils;
+package com.toby.sdk.utils.android;
 
 import android.graphics.Bitmap;
 
