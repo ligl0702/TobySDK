@@ -31,7 +31,7 @@ opkg install luci-app-quickstart
 
 
 
-sed -i 's/^/#/' /etc/opkg/customfeeds.conf
+echo "# add your custom package feeds here" > /etc/opkg/customfeeds.conf
 
 
 cd /tmp
