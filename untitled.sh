@@ -13,6 +13,9 @@ uci set dhcp.@domain[-1].name='time.android.com'
 uci set dhcp.@domain[-1].ip='203.107.6.88'
 uci commit dhcp
 
+uci set firewall.@zone[1].input='ACCEPT'
+uci commit firewall
+
 
 
 cd /tmp
