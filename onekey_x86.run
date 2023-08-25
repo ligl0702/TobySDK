@@ -1,7 +1,10 @@
+#add hostname for google tv
 uci add dhcp domain
 uci set dhcp.@domain[-1].name='time.android.com'
 uci set dhcp.@domain[-1].ip='203.107.6.88'
 uci commit dhcp
+
+##install kxsw tools
 cd /tmp
 wget https://raw.githubusercontent.com/AUK9527/Are-u-ok/main/x86/all//OpenClash_x86_update.run
 wget https://raw.githubusercontent.com/AUK9527/Are-u-ok/main/x86/all/PassWall_x86_update.run
@@ -9,8 +12,11 @@ wget https://raw.githubusercontent.com/AUK9527/Are-u-ok/main/x86/all/SSR-Plus_x8
 sh OpenClash_x86_update.run
 sh PassWall_x86_update.run
 sh SSR-Plus_x86_update.run
-wget https://github.com/vernesong/OpenClash/releases/download/v0.45.141-beta/luci-app-openclash_0.45.141-beta_all.ipk
-opkg install luci-app-openclash_0.45.141-beta_all.ipk
 
+## add keeflys.com for emotn store
+sed -i "s/keeflys.com//g" "/usr/share/passwall/rules/proxy_host"
+echo -n "keeflys.com" | tee -a /usr/share/passwall/rules/proxy_host
+sed -i "s/keeflys.com//g" "/etc/ssrplus/black.list"
+echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
 
 
