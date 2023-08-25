@@ -1,6 +1,8 @@
-##Change the timezone and NTP Server
-sed -i -e "s/option timezone .*/option timezone 'CST-8'\n\toption zonename 'Asia\/Shanghai'/" /etc/config/system
-sed -i "s/list server '0\.openwrt\.pool\.ntp\.org'/list server '0\.cn\.pool\.ntp\.org'/; s/list server '1\.openwrt\.pool\.ntp\.org'/list server '1\.cn\.pool\.ntp\.org'/; s/list server '2\.openwrt\.pool\.ntp\.org'/list server '2\.cn\.pool\.ntp\.org'/; s/list server '3\.openwrt\.pool\.ntp\.org'/list server '3\.cn\.pool\.ntp\.org'/" /etc/config/system
+##Change the timezone
+uci set system.@system[0].zonename='Asia/Shanghai'
+uci set system.@system[0].timezone='CST-8'
+uci commit system
+/etc/init.d/system reload
 
 ##Add the 3rd party packages for argon theme
 echo "src/gz supes https://op.dllkids.xyz/packages/aarch64_cortex-a53/" >> /etc/opkg/customfeeds.conf
