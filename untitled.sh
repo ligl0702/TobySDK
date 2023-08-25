@@ -52,6 +52,9 @@ sh PassWall_a53_update.run
 sh SSR-Plus_a53_update.run
 cd ..
 
+##install ddnsto
+is-opkg install 'app-meta-ddnsto'
+
 ## reboot the mt3000 router
 reboot
 
