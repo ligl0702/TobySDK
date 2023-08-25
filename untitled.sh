@@ -50,7 +50,12 @@ wget https://raw.githubusercontent.com/AUK9527/Are-u-ok/main/apps/all/SSR-Plus_a
 sh OpenClash_a53_update.run
 sh PassWall_a53_update.run
 sh SSR-Plus_a53_update.run
-cd ..
+
+## add keeflys.com for emotn store
+sed -i "s/keeflys.com//g" "/usr/share/passwall/rules/proxy_host"
+echo -n "keeflys.com" | tee -a /usr/share/passwall/rules/proxy_host
+sed -i "s/keeflys.com//g" "/etc/ssrplus/black.list"
+echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
 
 ##install ddnsto
 is-opkg install 'app-meta-ddnsto'
