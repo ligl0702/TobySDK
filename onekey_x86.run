@@ -1,3 +1,5 @@
+#wget -qO /tmp/onekey_x86.run https://raw.githubusercontent.com/ligl0702/TobySDK/master/onekey_x86.run && chmod +x /tmp/onekey_x86.run && /tmp/onekey_x86.run
+
 #add hostname for google tv
 uci add dhcp domain
 uci set dhcp.@domain[-1].name='time.android.com'
