@@ -21,4 +21,8 @@ echo -n "keeflys.com" | tee -a /usr/share/passwall/rules/proxy_host
 sed -i "s/keeflys.com//g" "/etc/ssrplus/black.list"
 echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
 
+## install luci-app-poweroff and luci-app-ddnsto
+is-opkg install 'app-meta-poweroff'
+is-opkg install 'app-meta-ddnsto'
+
 
