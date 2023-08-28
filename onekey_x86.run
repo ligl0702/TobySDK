@@ -24,5 +24,7 @@ echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
 ## install luci-app-poweroff and luci-app-ddnsto
 is-opkg install 'app-meta-poweroff'
 is-opkg install 'app-meta-ddnsto'
+is-opkg install 'app-meta-systools'
+
 
 
