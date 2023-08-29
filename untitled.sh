@@ -1,3 +1,6 @@
+## you can run the script
+## curl -sL https://raw.githubusercontent.com/ligl0702/TobySDK/master/untitled.sh | bash
+
 ##Change the timezone
 uci set system.@system[0].zonename='Asia/Shanghai'
 uci set system.@system[0].timezone='CST-8'
