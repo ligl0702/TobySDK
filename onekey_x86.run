@@ -25,6 +25,6 @@ echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
 is-opkg install 'app-meta-poweroff'
 is-opkg install 'app-meta-ddnsto'
 is-opkg install 'app-meta-systools'
-
+sh /usr/libexec/istorec/systools.sh turn_off_ipv6
 
 
