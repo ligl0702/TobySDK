@@ -1,4 +1,4 @@
-#wget -qO /tmp/onekey_x86.run https://raw.githubusercontent.com/ligl0702/TobySDK/master/onekey_x86.run && chmod +x /tmp/onekey_x86.run && /tmp/onekey_x86.run
+#curl -sL https://raw.githubusercontent.com/ligl0702/TobySDK/master/onekey_x86.run | bash
 
 ##add some note
 uci set system.@system[0].description=‘wkopenwrt’
