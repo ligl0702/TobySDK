@@ -1,5 +1,12 @@
 #wget -qO /tmp/onekey_x86.run https://raw.githubusercontent.com/ligl0702/TobySDK/master/onekey_x86.run && chmod +x /tmp/onekey_x86.run && /tmp/onekey_x86.run
 
+##add some note
+uci set system.@system[0].description=‘wkopenwrt’
+uci set system.@system[0].notes='插件的使用方法详见:
+https://didiboy0702.gitbook.io/ruan-lu-you-shi-yong-zhi-nan/passwall'
+uci commit system
+
+
 #add hostname for google tv
 uci add dhcp domain
 uci set dhcp.@domain[-1].name='time.android.com'
