@@ -1,3 +1,4 @@
+#!/bin/sh
 #curl -sL https://raw.githubusercontent.com/ligl0702/TobySDK/master/onekey_x86.run | bash
 
 ##add some note
@@ -33,11 +34,22 @@ is-opkg install 'app-meta-poweroff'
 is-opkg install 'app-meta-ddnsto'
 is-opkg install 'app-meta-systools'
 
-## close ipv6
-uci delete network.wan6
-uci commit network
-sh /usr/libexec/istorec/systools.sh turn_off_ipv6
-reboot
+
+
+# 获取 model name 的值
+model_name=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d ':' -f 2 | sed -e 's/^[ \t]*//')
+# 检查 model name 的值是否是 "Intel(R) N100"
+if [ "$model_name" = "Intel(R) N100" ]; then
+    echo "n100"
+else
+    # 如果不是N100 关闭ipv6
+    echo "正在关闭ipv6"
+    uci delete network.wan6
+    uci commit network
+    sh /usr/libexec/istorec/systools.sh turn_off_ipv6
+fi
+
+
 
 
 
