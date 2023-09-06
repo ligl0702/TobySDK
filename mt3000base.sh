@@ -21,6 +21,27 @@ setup_software_source() {
   fi
 }
 
+add_emotn_domain() {
+    echo -e "\n\n"
+    if [ -f "/usr/share/passwall/rules/proxy_host" ]; then
+        sed -i "s/keeflys.com//g" "/usr/share/passwall/rules/proxy_host"
+        echo -n "keeflys.com" | tee -a /usr/share/passwall/rules/proxy_host
+        echo "已添加到passwall代理域名"
+    else
+        echo "添加失败! 请确保 passwall 已安装"
+    fi
+
+    if [ -f "/etc/ssrplus/black.list" ]; then
+        sed -i "s/keeflys.com//g" "/etc/ssrplus/black.list"
+        echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
+        echo "已添加到SSRP强制域名代理"
+    else
+        echo "添加失败! 请确保 SSRP 已安装"
+    fi
+
+    echo -e "\n\n"
+}
+
 add_dhcp_domain() {
     local domain_name="time.android.com"
     local domain_ip="203.107.6.88"
@@ -81,10 +102,7 @@ sed -i 's/76/48/g' /etc/config/glfan
 
 
 ## add keeflys.com for emotn store
-sed -i "s/keeflys.com//g" "/usr/share/passwall/rules/proxy_host"
-echo -n "keeflys.com" | tee -a /usr/share/passwall/rules/proxy_host
-sed -i "s/keeflys.com//g" "/etc/ssrplus/black.list"
-echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
+add_emotn_domain
 
 ##install ddnsto
 is-opkg install 'app-meta-ddnsto'
