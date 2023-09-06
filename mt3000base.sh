@@ -8,6 +8,14 @@ uci set system.@system[0].timezone='CST-8'
 uci commit system
 /etc/init.d/system reload
 
+##Modify the starting cpu temperature for fan work
+cd /tmp
+sed -i 's/76/48/g' /etc/config/glfan
+
+## Modify the firewall input for wan interface
+uci set firewall.@zone[1].input='ACCEPT'
+uci commit firewall
+
 setup_software_source() {
   
   if [ "$1" -eq 0 ]; then
@@ -21,47 +29,26 @@ setup_software_source() {
   fi
 }
 
-add_emotn_domain() {
-    echo -e "\n\n"
-    if [ -f "/usr/share/passwall/rules/proxy_host" ]; then
-        sed -i "s/keeflys.com//g" "/usr/share/passwall/rules/proxy_host"
-        echo -n "keeflys.com" | tee -a /usr/share/passwall/rules/proxy_host
-        echo "已添加到passwall代理域名"
-    else
-        echo "添加失败! 请确保 passwall 已安装"
-    fi
-
-    if [ -f "/etc/ssrplus/black.list" ]; then
-        sed -i "s/keeflys.com//g" "/etc/ssrplus/black.list"
-        echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
-        echo "已添加到SSRP强制域名代理"
-    else
-        echo "添加失败! 请确保 SSRP 已安装"
-    fi
-
-    echo -e "\n\n"
-}
-
 add_dhcp_domain() {
     local domain_name="time.android.com"
     local domain_ip="203.107.6.88"
-    
-    # 检查是否存在相同的域名记录
     existing_records=$(uci show dhcp | grep "dhcp.@domain\[[0-9]\+\].name='$domain_name'")
     if [ -z "$existing_records" ]; then
-        # 添加新的域名记录
         uci add dhcp domain
         uci set "dhcp.@domain[-1].name=$domain_name"
         uci set "dhcp.@domain[-1].ip=$domain_ip"
         uci commit dhcp
         echo
-        echo "已添加新的域名记录"
+        echo "add domain success!"
     else
-        echo "相同的域名记录已存在，无需重复添加"
+        echo "already add 203.107.6.88"
     fi
     echo -e "\n"
     echo -e "time.android.com    203.107.6.88 "
 }
+
+##Add the hostname for Android TV/Google TV
+add_dhcp_domain
 
 ##Add the 3rd party packages for argon theme
 setup_software_source 0
@@ -71,14 +58,6 @@ opkg install luci-app-argon-config
 uci set luci.main.mediaurlbase='/luci-static/argon'
 uci set luci.main.lang='zh_cn'
 uci commit
-
-##Add the hostname for Android TV/Google TV
-add_dhcp_domain
-
-## Modify the firewall input for wan interface
-uci set firewall.@zone[1].input='ACCEPT'
-uci commit firewall
-
 
 ##install luci-app-store
 cd /tmp
@@ -92,18 +71,8 @@ opkg install luci-lib-taskd_1.0.18_all.ipk
 opkg install luci-app-store_0.1.14-1_all.ipk
 opkg install luci-app-quickstart
 
-
 ##Remove the 3rd party packages source
 setup_software_source 0
-
-##Modify the starting cpu temperature for fan work
-cd /tmp
-sed -i 's/76/48/g' /etc/config/glfan
-
-
-
-## add keeflys.com for emotn store
-## add_emotn_domain
 
 ##install ddnsto
 is-opkg install 'app-meta-ddnsto'
