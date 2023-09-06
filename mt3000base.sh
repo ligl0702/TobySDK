@@ -8,16 +8,37 @@ uci commit system
 /etc/init.d/system reload
 
 setup_software_source() {
-  ## 传入0和1 分别代表原始和第三方软件源
+  
   if [ "$1" -eq 0 ]; then
     echo "# add your custom package feeds here" > /etc/opkg/customfeeds.conf
-    # 在这里执行与选项0相关的操作
+    
   elif [ "$1" -eq 1 ]; then
     echo "src/gz supes https://op.dllkids.xyz/packages/aarch64_cortex-a53" >> /etc/opkg/customfeeds.conf
-    # 在这里执行与选项1相关的操作
+    
   else
     echo "Invalid option. Please provide 0 or 1."
   fi
+}
+
+add_dhcp_domain() {
+    local domain_name="time.android.com"
+    local domain_ip="203.107.6.88"
+    
+    # 检查是否存在相同的域名记录
+    existing_records=$(uci show dhcp | grep "dhcp.@domain\[[0-9]\+\].name='$domain_name'")
+    if [ -z "$existing_records" ]; then
+        # 添加新的域名记录
+        uci add dhcp domain
+        uci set "dhcp.@domain[-1].name=$domain_name"
+        uci set "dhcp.@domain[-1].ip=$domain_ip"
+        uci commit dhcp
+        echo
+        echo "已添加新的域名记录"
+    else
+        echo "相同的域名记录已存在，无需重复添加"
+    fi
+    echo -e "\n"
+    echo -e "time.android.com    203.107.6.88 "
 }
 
 ##Add the 3rd party packages for argon theme
@@ -29,10 +50,7 @@ uci set luci.main.lang='zh_cn'
 uci commit
 
 ##Add the hostname for Android TV/Google TV
-uci add dhcp domain
-uci set dhcp.@domain[-1].name='time.android.com'
-uci set dhcp.@domain[-1].ip='203.107.6.88'
-uci commit dhcp
+add_dhcp_domain
 
 ## Modify the firewall input for wan interface
 uci set firewall.@zone[1].input='ACCEPT'
