@@ -62,6 +62,7 @@ echo -n "keeflys.com" | tee -a /etc/ssrplus/black.list
 
 ##install ddnsto
 is-opkg install 'app-meta-ddnsto'
+is-opkg install 'app-meta-linkease'
 
 ## reboot the mt3000 router
 reboot
