@@ -64,6 +64,7 @@ add_dhcp_domain() {
 }
 
 ##Add the 3rd party packages for argon theme
+setup_software_source 0
 setup_software_source 1
 opkg update
 opkg install luci-app-argon-config
@@ -102,7 +103,7 @@ sed -i 's/76/48/g' /etc/config/glfan
 
 
 ## add keeflys.com for emotn store
-add_emotn_domain
+## add_emotn_domain
 
 ##install ddnsto
 is-opkg install 'app-meta-ddnsto'
