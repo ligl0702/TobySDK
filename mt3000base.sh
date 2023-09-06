@@ -7,8 +7,21 @@ uci set system.@system[0].timezone='CST-8'
 uci commit system
 /etc/init.d/system reload
 
+setup_software_source() {
+  ## 传入0和1 分别代表原始和第三方软件源
+  if [ "$1" -eq 0 ]; then
+    echo "# add your custom package feeds here" > /etc/opkg/customfeeds.conf
+    # 在这里执行与选项0相关的操作
+  elif [ "$1" -eq 1 ]; then
+    echo "src/gz supes https://op.dllkids.xyz/packages/aarch64_cortex-a53" >> /etc/opkg/customfeeds.conf
+    # 在这里执行与选项1相关的操作
+  else
+    echo "Invalid option. Please provide 0 or 1."
+  fi
+}
+
 ##Add the 3rd party packages for argon theme
-echo "src/gz supes https://op.dllkids.xyz/packages/aarch64_cortex-a53/" >> /etc/opkg/customfeeds.conf
+setup_software_source 1
 opkg update
 opkg install luci-app-argon-config
 uci set luci.main.mediaurlbase='/luci-static/argon'
@@ -40,7 +53,7 @@ opkg install luci-app-quickstart
 
 
 ##Remove the 3rd party packages source
-echo "# add your custom package feeds here" > /etc/opkg/customfeeds.conf
+setup_software_source 0
 
 ##Modify the starting cpu temperature for fan work
 cd /tmp
