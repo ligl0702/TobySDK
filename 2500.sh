@@ -2,8 +2,8 @@
 proxy_github="https://ghproxy.com/"
 setup_base_init() {
 
-    #添加作者信息
-    add_author_info
+	#添加作者信息
+	add_author_info
 
 	#添加安卓时间服务器
 	add_dhcp_domain
@@ -66,7 +66,6 @@ setup_software_source() {
 	fi
 }
 
-
 is_x86_64_router() {
 	arch=$(uname -m)
 	if [ "$arch" = "x86_64" ]; then
@@ -80,7 +79,6 @@ install_run_apps() {
 	cd /tmp
 	arm_base_url=${proxy_github}"https://raw.githubusercontent.com/AUK9527/Are-u-ok/main/apps/all/"
 	armapps=("OpenClash_a53_update.run" "PassWall_a53_update.run" "SSR-Plus_a53_update.run" "PassWall2_a53_all.run" "VSSR_a53.run" "ByPass_a53.run")
-	base_url=$arm_base_url
 	base_apps=("${armapps[@]}") # 使用双引号和 @ 符号来复制数组
 	if [ $# -eq 1 ] && [[ "$1" =~ ^[0-9]+$ ]]; then
 		num_to_install=$1 # 传入的参数是一个数字，表示要安装的数量
@@ -89,7 +87,7 @@ install_run_apps() {
 			if [ -e "$run" ]; then
 				echo "$run 已存在,跳过下载,直接安装"
 			else
-				wget -O "$run" "$base_url$run"
+				wget -O "$run" "$arm_base_url$run"
 			fi
 			sh "$run"
 		done
@@ -110,7 +108,7 @@ install_run_apps() {
 		echo "请提供正确的参数：一个数字（安装数量）或两个数字（第一个数字不作数，第二个数字代表数组下标）"
 	fi
 
-    #更新clash 内核 和 OpenClash客户端版本
+	#更新clash 内核 和 OpenClash客户端版本
 	upgrade_clash_core
 	upgrade_openclash
 }
@@ -128,8 +126,8 @@ upgrade_clash_core() {
 	wget -O clashtun.gz $proxy_github"https://raw.githubusercontent.com/wukongdaily/allinonescript/main/arm64/tun.gz"
 	## 下载ARM meta arm内核
 	wget -O clashmeta.tar.gz $meta_base_url$meta_filename_arm
-	
-    # 解压 clashdev.tar.gz 到 /etc/openclash/core/clash 目录
+
+	# 解压 clashdev.tar.gz 到 /etc/openclash/core/clash 目录
 	tar -xzvf /tmp/clashdev.tar.gz -C /etc/openclash/core/
 	#解压 clashtun.gz 文件到 /etc/openclash/core/ 目录，并设置可执行权限
 	gzip -d -c /tmp/clashtun.gz >/etc/openclash/core/clash_tun && chmod +x /etc/openclash/core/clash_tun
@@ -147,7 +145,6 @@ upgrade_openclash() {
 	opkg install luci-app-openclash
 	setup_software_source 0
 }
-
 
 # 添加主机名映射(解决安卓原生TV首次连不上wifi的问题)
 add_dhcp_domain() {
@@ -197,7 +194,7 @@ add_emotn_domain() {
 
 #装机必备
 requiredInstallation() {
-	
+
 	is-opkg do_self_upgrade
 	is-opkg install 'app-meta-ddnsto'
 	is-opkg install 'app-meta-linkease'
