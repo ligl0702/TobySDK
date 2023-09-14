@@ -1,6 +1,4 @@
-#!/bin/bash
-opkg update
-opkg install bash
+#!/bin/sh
 proxy_github="https://ghproxy.com/"
 setup_base_init() {
 
